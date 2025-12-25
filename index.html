@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 АВТО-ВИКТОРИНА С ОГОНЬКОМ 🔥</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./main.js" defer></script>
+</head>
+<body>
+    <!-- Частицы -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Конфетти -->
+    <div class="confetti" id="confetti"></div>
+    
+    <!-- Уведомление -->
+    <div class="notification" id="notification">
+        <i class="fas fa-bell"></i>
+        <span id="notification-text">Уведомление!</span>
+    </div>
+    
+    <!-- Основной контейнер -->
+    <div class="container">
+        <!-- Шапка -->
+        <div class="header">
+            <h1 class="title">🚗 АВТО-ВИКТОРИНА 🏁</h1>
+            <p class="subtitle">10 вопросов для настоящих гонщиков!</p>
+        </div>
+        
+        <!-- Контент -->
+        <div class="content">
+            <!-- Начальный экран -->
+            <div class="start-screen" id="startScreen">
+                <div class="car-icon">
+                    <i class="fas fa-car-side"></i>
+                </div>
+                <h2 class="title" style="font-size: 3rem;">ГОТОВ К ИСПЫТАНИЮ?</h2>
+                <p style="font-size: 1.3rem; margin: 30px 0; line-height: 1.6; color: #aaa;">
+                    Разгони свой мозг до максимальных оборотов!<br>
+                    Проверь знания об автомобилях на предельной скорости!
+                </p>
+                
+                <!-- Статистика -->
+                <div style="display: flex; justify-content: space-around; margin: 40px 0;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; color: #00f7ff; font-weight: 900;">10</div>
+                        <div style="color: #aaa;">ВОПРОСОВ</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; color: #f72585; font-weight: 900;">30с</div>
+                        <div style="color: #aaa;">НА ОТВЕТ</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; color: #00ff00; font-weight: 900;">3</div>
+                        <div style="color: #aaa;">УРОВНЯ СЛОЖНОСТИ</div>
+                    </div>
+                </div>
+                
+                <!-- Кнопка старта -->
+                <button class="btn btn-start" id="startBtn">
+                    <i class="fas fa-play"></i>
+                    ЗАВЕСТИ МОТОР!
+                </button>
+            </div>
+            
+            <!-- Экран вопроса -->
+            <div class="question-screen" id="questionScreen" style="display: none;">
+                <!-- Прогресс -->
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                        <span style="color: #aaa;">ПРОГРЕСС</span>
+                        <span id="progressText" style="color: #00f7ff; font-weight: 700;">1/10</span>
+                    </div>
+                </div>
+                
+                <!-- Номер вопроса и таймер -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                    <div style="background: linear-gradient(45deg, #00f7ff, #0099ff); 
+                                color: black; padding: 15px 30px; border-radius: 50px; 
+                                font-weight: 900; font-size: 1.3rem;">
+                        ВОПРОС <span id="questionNumber">1</span>
+                    </div>
+                    <div class="question-timer">
+                        <i class="fas fa-clock"></i>
+                        <span id="timer">30</span> СЕКУНД
+                    </div>
+                </div>
+                
+                <!-- Текст вопроса -->
+                <div class="question-text" id="questionText">
+                    Загрузка вопроса...
+                </div>
+                
+                <!-- Варианты ответов -->
+                <div class="options-container" id="optionsContainer">
+                    <!-- Варианты будут добавляться здесь -->
+                </div>
+                
+                <!-- Кнопки навигации -->
+                <div class="buttons">
+                    <button class="btn btn-prev" id="prevBtn">
+                        <i class="fas fa-arrow-left"></i>
+                        НАЗАД
+                    </button>
+                    <button class="btn btn-next" id="nextBtn">
+                        ВПЕРЁД
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Экран результатов -->
+            <div class="result-screen" id="resultScreen" style="display: none;">
+                <div class="result-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h2 id="resultTitle" style="font-size: 3rem; margin-bottom: 20px;">РЕЗУЛЬТАТЫ!</h2>
+                <div class="score" id="finalScore">0/10</div>
+                <p id="scoreText" style="font-size: 1.3rem; color: #aaa; margin-bottom: 40px;">
+                    Твой результат загрузки...
+                </p>
+                
+                <!-- Детали результатов -->
+                <div id="resultDetails" style="text-align: left; margin: 40px 0;">
+                    <!-- Детали будут добавляться здесь -->
+                </div>
+                
+                <!-- Кнопки действий -->
+                <div class="buttons">
+                    <button class="btn btn-prev" id="restartBtn">
+                        <i class="fas fa-redo"></i>
+                        ЕЩЁ РАЗ!
+                    </button>
+                    <button class="btn btn-next" id="shareBtn">
+                        <i class="fas fa-share-alt"></i>
+                        ПОХВАСТАТЬСЯ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
